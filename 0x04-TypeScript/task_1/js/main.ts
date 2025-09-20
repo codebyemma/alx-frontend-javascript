@@ -5,9 +5,10 @@ interface Teacher {
     yearsOfExperience?: number,
     location: string,
     contract?: boolean
+    [key: string]: any
 }
 
-interface Directors extends Teacher {
+interface Director extends Teacher {
     numberOfReports: number
 }
 
@@ -20,7 +21,7 @@ let teacher3: Teacher = {
 
 console.log(teacher3);
 
-let director1: Directors = {
+let director1: Director = {
     firstName: "John",
     lastName: "Doe",
     location: "New York",
@@ -57,4 +58,6 @@ class studentClass implements teacherclass  {
         return this.firstName;
     }
 
-}
+};
+
+const student1 = new studentClass();
