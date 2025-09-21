@@ -58,7 +58,7 @@ interface TeacherClass {
 }
 
 // StudentClass implements TeacherClass
-class StudentClass implements TeacherClass {
+class StudentClass {
   firstName: string;
   lastName: string;
 
