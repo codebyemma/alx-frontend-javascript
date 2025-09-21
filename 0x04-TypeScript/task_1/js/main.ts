@@ -37,19 +37,24 @@ console.log("Director:", director1);
 
 // Function interface
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  ({ firstName, lastName }: { firstName: string; lastName: string }): string;
 }
 
 // Function implementation
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName[0]}. ${lastName}`;
-};
+function printTeacher({ 
+  firstName, 
+  lastName }: { 
+    firstName: string; 
+    lastName: string 
+  }): string {
+  return `${firstName}. ${lastName}`;
+}
+
 
 //function printTeacher(firstName: string, lastName: string): string {
   //return `${firstName[0]}. ${lastName}`;
 //}
 
-console.log("Print Teacher:", printTeacher("John", "Doe"));
 
 // TeacherClass interface
 interface TeacherClass {
