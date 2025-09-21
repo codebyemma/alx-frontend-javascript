@@ -30,11 +30,11 @@ class Teacher implements TeacherInterface {
   }
 
   getCoffeeBreak(): string {
-    return "Cannot have a break now";
+    return "Cannot have a break";
   }
 
   workTeacherTasks(): string {
-    return "Getting to teacher tasks"; // fixed typo
+    return "Getting to work"; // fixed typo
   }
 }
 
@@ -44,7 +44,7 @@ function createEmployee(salary: number | string): Director | Teacher {
 }
 
 // Type guard
-function isDirector(employee: Director | Teacher): employee is Director {
+export function isDirector(employee: Director | Teacher): employee is Director {
   return (employee as Director).workDirectorTasks !== undefined;
 }
 
@@ -57,9 +57,9 @@ function executeWork(employee: Director | Teacher): string {
   }
 }
 
-type Subject = "Math" | "History";  // singular, for the type
+type Subject = "Math" | "History";
 
-function teachClass(todayClass: Subject): string {
+export function teachClass(todayClass: Subject): string {
   if (todayClass === "Math") {
     return "Teaching Math";
   } else if (todayClass === "History") {
@@ -72,5 +72,7 @@ console.log(createEmployee(200));
 console.log(createEmployee(1000));
 console.log(createEmployee("$500"));
 
-console.log(executeWork(createEmployee(200)));   // Teacher -> "Getting to teacher tasks"
-console.log(executeWork(createEmployee(1000)));  // Director -> "Getting to director tasks"
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
+teachClass('Math');
+teachClass('History');
