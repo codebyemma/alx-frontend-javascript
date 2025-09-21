@@ -1,63 +1,78 @@
+// Teacher interface
 interface Teacher {
-    readonly firstName: string,
-    readonly lastName: string,
-    fullTimeEmployee: boolean,
-    yearsOfExperience?: number,
-    location: string,
-    contract?: boolean
-    [key: string]: any
+  readonly firstName: string;
+  readonly lastName: string;
+  fullTimeEmployee: boolean;
+  yearsOfExperience?: number;
+  location: string;
+  contract?: boolean;
+  [key: string]: any; // allows extra properties
 }
 
+// Director extends Teacher
 interface Director extends Teacher {
-    numberOfReports: number
+  numberOfReports: number;
 }
 
+// Teacher example
 let teacher3: Teacher = {
-    firstName: "John",
-    lastName: "Doe",
-    fullTimeEmployee: true,
-    location: "New York",
+  firstName: "John",
+  lastName: "Doe",
+  fullTimeEmployee: true,
+  location: "New York",
 };
 
-console.log(teacher3);
+console.log("Teacher:", teacher3);
 
+// Director example
 let director1: Director = {
-    firstName: "John",
-    lastName: "Doe",
-    location: "New York",
-    fullTimeEmployee: true,
-    numberOfReports: 17
+  firstName: "John",
+  lastName: "Doe",
+  location: "New York",
+  fullTimeEmployee: true,
+  numberOfReports: 17,
 };
 
-console.log(director1);
+console.log("Director:", director1);
 
+// Function interface
 interface printTeacherFunction {
-    (firstName: string, lastName: string): string;
+  (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
-    return `${firstName[0]}. ${lastName}`;
+// Function implementation
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  return `${firstName[0]}. ${lastName}`;
 };
 
-console.log(printTeacher("John", "Doe"));
+console.log("Print Teacher:", printTeacher("John", "Doe"));
 
-interface teacherclass {
-    firstName: string;
-    lastName: string;
-};
+// TeacherClass interface
+interface TeacherClass {
+  firstName: string;
+  lastName: string;
+}
 
-class studentClass implements teacherclass  {
-    firstName: string;
-    lastName: string;
+// StudentClass implements TeacherClass
+class StudentClass implements TeacherClass {
+  firstName: string;
+  lastName: string;
 
-    workOnHomework(): string {
-        return "Currently working";
-    }
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-    displayName(): string {
-        return this.firstName;
-    }
+  workOnHomework(): string {
+    return "Currently working";
+  }
 
-};
+  displayName(): string {
+    return this.firstName;
+  }
+}
 
-const student1 = new studentClass();
+// Create student instance
+const student1 = new StudentClass("Alice", "Smith");
+console.log("Student Display Name:", student1.displayName());
+console.log("Student Homework:", student1.workOnHomework());
